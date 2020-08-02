@@ -1,0 +1,23 @@
+{% sw_extends '@Storefront/storefront/block/cms-block-image-text.html.twig' %}
+
+{% block block_image_text %}
+    {% set element = block.slots.getSlot('left') %}
+    <div class="col-lg cvp-main-banner-background d-flex align-items-center">
+        <div class="cvp-main-banner-background-layout"></div>
+        {% block element_text_inner %}
+        <div class="container">
+            <div class="row d-block col-md-4 cvp-main-banner-content">
+                {{ element.data.content|raw }}
+
+                <button class="btn btn-outline-secondary cvp-main-banner-button">Explore</button>
+            </div>
+        </div>
+        {% endblock %}
+
+        <div class="cvp-main-banner-mouse-down">
+            <a href="#nature-block">
+                <img src={{asset('/bundles/cellvitalplatformtheme/assets/mouse-down.svg')}}>
+            </a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% sw_extends '@Storefront/storefront/block/cms-block-image-text.html.twig' %}
+
+{% block block_image_text %}
+    {% set element = block.slots.getSlot('left') %}
+        <div class="col-12 cvp-background" id="nature-block">
+            <div class="container cvp-container-nature">
+                <div class="col-md-5" >
+                {{ element.data.content|raw }}
+                <hr />
+                </div>
+
+                 {% block block_nature_image %}
+                    <div class="cvp-nature-images col-md-7">
+                        <img src={{ asset('/bundles/cellvitalplatformtheme/assets/nature1.png') }}
+                                alt=""
+                                class="cvp-nature-image"/>
+                        <img src={{ asset('/bundles/cellvitalplatformtheme/assets/nature2.png') }}
+                                alt=""
+                                class="cvp-nature-image"/>
+                    </div>
+                {% endblock %}
+            </div>
+
+           
+        </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% sw_extends "@Storefront/storefront/layout/header/actions/cart-widget.html.twig" %}
+
+{% block layout_header_actions_cart_widget %}
+    <span class="header-cart-icon">
+        <img src={{ asset('/bundles/cellvitalplatformtheme/assets/bag.svg') }}>
+
+         {% if page.cart.lineItems|length > 0 %}
+            <span class="cvp-cart-badge">{{ page.cart.lineItems|length }}</span>
+        {% endif %}
+    </span>
+{% endblock %}

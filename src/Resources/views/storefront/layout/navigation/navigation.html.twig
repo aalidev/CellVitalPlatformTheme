@@ -1,0 +1,34 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
+
+{% block layout_main_navigation %}
+    {% block layout_main_navigation_menu_items %}
+      <div class="main-navigation"
+         id="mainNavigation"
+         data-flyout-menu="true">
+            <nav class="nav">
+                {% for treeItem in page.header.navigation.tree %}
+                    {% set category = treeItem.category %}
+                    {% set name = category.translated.name %}
+                    {% set categorId = category.id %}
+                        <ul class="nav cvp-navigation">
+                            {% block layout_main_navigation_menu_item %}
+                                <li>
+                                    <a class="nav-link cvp-navigation-link{% if categorId is same as(page.header.navigation.active.id) %} active {% endif %}"
+                                        href="{% if category.externalLink %}{{ category.externalLink }}{% else %}{{ seoUrl('frontend.navigation.page', { navigationId: categorId }) }}{% endif %}"
+                                        itemprop="url"
+                                        {% if treeItem.children|length > 0 %}
+                                            data-flyout-menu-trigger="{{ categorId }}"
+                                        {% endif %}
+                                        title="{{ name }}">
+                                        <div class="cvp-navigation-link-text">
+                                            <span itemprop="name">{{ name }}</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            {% endblock %}
+                        </ul>
+                {% endfor %}
+            </nav>
+        </div>
+    {% endblock %}
+{% endblock %}

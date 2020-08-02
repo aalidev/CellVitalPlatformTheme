@@ -1,0 +1,28 @@
+.cvp-benefits-list {
+    padding: 120px 0;
+}
+
+.cvp-benefits-list-content {
+    .benefits-icon {
+        width: 64px;
+        height: 64px;
+        background: #faefe5;
+        border-radius: 8px;
+        margin-bottom: 24px;
+        padding: 10px;
+    }
+
+    p {
+        color: #8c8c8c;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+
+        & > b {
+            color: #181818;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 32px;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{% sw_extends '@Storefront/storefront/layout/header/logo.html.twig' %}
+
+{% block layout_header_logo_inner %}
+    <div class="header-logo-main">
+        {% block layout_header_logo_link %}
+            <a class="header-logo-main-link"
+               href="{{ path('frontend.home.page') }}"
+               title="{{ "header.logoLink"|trans|striptags }}">
+                {% block layout_header_logo_image %}
+                    <picture>
+                        {% block layout_header_logo_image_default %}
+                            <img src={{ asset('/bundles/cellvitalplatformtheme/assets/logo-white.png') }}
+                                    alt="{{ "header.logoLink"|trans|striptags }}"
+                                    class="cvp-logo"/>
+                        {% endblock %}
+                    </picture>
+                {% endblock %}
+            </a>
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% sw_extends "@Storefront/storefront/component/product/card/box.html.twig" %}
+
+{% block component_product_box_include %}
+    <div class="cvp-product-box">
+        <div class="cvp-product-box-content">
+            <h3>Cellvital homecare single</h3>
+            <p class="product-price">€ 3 480,00</p>
+            <p class="product-description">
+                Der neue CV-HC HeadCare ist leichter als sein Vorgänger und wird für Behandlungen der Ohren eingesetzt. Z.B. für die Behandlung eines Tinnitus sowie zur gezielten Verbesserung der arteriellen Durchblutung der Ohren.
+            </p>
+
+            <button class="btn btn-lg">Buy now</button>
+        </div>
+
+        <div class="cvp-product-box-image">
+            <img src={{asset("/bundles/cellvitalplatformtheme/assets/homecare.png")}} alt=""/>
+        </div>
+    </div>
+{% endblock %}
