@@ -1,3 +1,3 @@
 # CellVitalPlatformTheme
 
-Create Theme for Cellvital project
+Theme for Cellvital project
