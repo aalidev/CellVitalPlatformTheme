@@ -9,12 +9,11 @@
         ] 
     %}
 
-    <div class="col-md-12 cvp-benefits-list">
-        <div class="container">
-            <div class="row">
+    <div class="container cvp-benefits-list">
+        <div class="row">
             {% for list in benefitsList %}
                 {% block benefits_content %}
-                    <div class="col col-md-3 cvp-benefits-list-content">
+                    <div class="col-md-3 cvp-benefits-list-content">
                         <div class="benefits-icon">
                             <img src={{asset("/bundles/cellvitalplatformtheme/assets/benefits-" ~ list.slot ~ ".svg")}} alt="" />
                         </div>
@@ -23,7 +22,6 @@
                 {% endblock %}
             {% endfor %}
             </div>
-        </div>
     </div>
 
 {% endblock %}

@@ -1,0 +1,21 @@
+{% sw_extends "@Storefront/storefront/component/product/card/box.html.twig" %}
+
+{% block component_product_box_include %}
+    <div class="cvp-product-box">
+        <div class="cvp-product-box-content">
+            <h2>{{product.name}}</h2>
+            <h4 class="cvp-product-price">€ {{product.calculatedPrice.unitPrice}}</h4>
+            <p class="cvp-product-description">
+                {{product.description}}
+            </p>
+            <a href="{{ seoUrl('frontend.detail.page', {'productId': product.id}) }}"
+                    title="{{ product.name }}">
+                <button class="btn btn-lg">Buy now</button>
+            </a>
+        </div>
+
+        <div class="cvp-product-box-image">
+            <img src={{asset("/bundles/cellvitalplatformtheme/assets/homecare.png")}} alt=""/>
+        </div>
+    </div>
+{% endblock %}

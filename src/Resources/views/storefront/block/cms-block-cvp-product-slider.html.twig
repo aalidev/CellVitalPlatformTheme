@@ -37,7 +37,7 @@
                             {% endif %}
 
                             {% block element_product_slider_slider %}
-                                <div class="base-slider product-slider{% if sliderConfig.border.value %} has-border{% endif %}{% if sliderConfig.navigation.value %} has-nav{% endif %}"
+                                <div class="container base-slider product-slider{% if sliderConfig.border.value %} has-border{% endif %}"
                                     data-product-slider="true"
                                     data-product-slider-options="{{ productSliderOptions|json_encode }}">
 
@@ -56,7 +56,7 @@
                                                 {% for product in element.data.products.elements %}
                                                     {% block element_product_slider_inner_item %}
                                                         <div class="product-slider-item">
-                                                            {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' %}
+                                                            {% sw_include '@Storefront/storefront/component/product/card/cvp-box.html.twig' with {'product': product} %}
                                                         </div>
                                                     {% endblock %}
                                                 {% endfor %}

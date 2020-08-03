@@ -8,3 +8,77 @@
 .container-main {
     padding: 0;
 }
+
+h1 {
+    font-size: 2.75rem;
+    line-height: 3.5rem;
+}
+
+h2 {
+    font-size: 2.25rem;
+    font-weight: 3rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+    line-height: 2.5rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+    line-height: 2rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 500;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.product-slider-controls-next {
+    right: 7px;
+}
+
+.product-slider-controls-prev {
+    left: 7px;
+}
+
+.product-slider-controls-next > .icon,
+.product-slider-controls-prev > .icon {
+    color: #000;
+    width: 16px;
+    height: 16px;
+    stroke: black;
+    stroke-width: 2px;
+    position: relative;
+
+    &::after {
+        content: "";
+        width: 48px;
+        height: 48px;
+        background-color: #dbd9d2;
+        display: block;
+        border-radius: 50%;
+        position: absolute;
+        z-index: -1;
+        top: -12px;
+    }
+}
+
+.product-slider-controls-next > .icon::after {
+    left: -20px;
+}
+
+.product-slider-controls-prev > .icon::after {
+    left: -12px;
+}
+
+img {
+    width: 100%;
+}
