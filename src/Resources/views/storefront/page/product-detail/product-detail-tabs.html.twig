@@ -1,0 +1,33 @@
+{% block product_detail_tabs %}
+    <div>
+        <div class="block-navigation-tabs product-detail-tabs">
+            {% block navigation_tab_itemms %}
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="detail-tab" data-toggle="tab" href="#details" role="tab" aria-controls={{tab.slot}} aria-selected="true">Details</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls={{tab.slot}} aria-selected="false">Description</a>
+                        </li>
+                </ul>
+            {% endblock %}
+        </div> 
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane container fade show active" id="details" role="tabpanel" aria-labelledby="detail-tab">{{page.product.description}}</div>
+            <div class="tab-pane container fade show" id="description" role="tabpanel" aria-labelledby="detail-tab">
+                <h5>{{ 'cellvital-theme.product.packageInfo' | trans }}</h5>
+                <table>
+                    <tr>
+                        <td>{{ 'cellvital-theme.product.weight' | trans }}</td>
+                        <td>{{ page.product.weight }}kg</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'cellvital-theme.product.dimensions' | trans }} </td>
+                        <td>{{ page.product.height/10 }}x{{ page.product.width/10 }}x{{ page.product.length/10 }}cm</td>
+                    </tr>
+                </table>
+            </div>
+        </div>       
+    </div>
+{% endblock %}

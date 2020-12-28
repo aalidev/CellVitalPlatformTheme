@@ -1,0 +1,32 @@
+{% sw_extends '@Storefront/storefront/block/cms-block-image-text.html.twig' %}
+
+{% block block_image_text %}
+	{% set benefitsList = [
+        block.slots.getSlot('one'), 
+        block.slots.getSlot('two'), 
+        block.slots.getSlot('three'), 
+        block.slots.getSlot('four') 
+        ] 
+    %}
+
+	<div class="container cvp-benefits-list benefits-second">
+		<div class="row justify-content-end">
+			<div class="col-md-6">
+				<h2>Requirements</h2>
+				<div class="row">
+					{% for list in benefitsList %}
+						{% block benefits_item %}
+							<div class="col col-6 col-md-6 cvp-benefits-list-item benefits-second-content">
+								<div class="benefits-icon">
+									<img src={{asset("/bundles/cellvitalplatformtheme/assets/benefits-" ~ list.slot ~ "-v2.svg")}} alt=""/>
+								</div>
+								{{ list.data.content|raw }}
+							</div>
+						{% endblock %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

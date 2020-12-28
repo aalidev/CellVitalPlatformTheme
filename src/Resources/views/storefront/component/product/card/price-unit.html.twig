@@ -1,0 +1,13 @@
+{% sw_extends "@Storefront/storefront/component/product/card/price-unit.html.twig" %}
+
+{% block component_product_box_price_info %}
+    {% set purchaseUnit = product.purchaseUnit %}
+    {% set listingPrice = product.calculatedListingPrice %}
+    {% set fromPrice = listingPrice.from %}
+    {% set referncePrice = product.calculatedPrice.referencePrice %}
+
+    <div class="product-price-info">
+       <h4 class="product-price-info-total">{{ fromPrice.unitPrice|currency }}</h4>
+       <p class="product-price-info-old">{{ listingPrice.to.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}</p>
+    </div>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_flashbags %}{% endblock %}
+
+{% block base_navigation %}{% endblock %}
+
+{% block base_main_container %}
+	<div class="container-main">
+		{% block base_breadcrumb %}
+			{% if breadcrumbList %}
+				{% sw_include '@Storefront/storefront/layout/breadcrumb.html.twig' %}
+			{% endif %}
+		{% endblock %}
+
+		{% block base_content %}
+			{% block page_checkout %}
+				<div class="checkout">
+					{% block page_checkout_container %}
+						<div class="checkout-container row">
+							{% block page_checkout_main %}
+								<div class="col-md-6">
+									{% block base_flashbags_checkout %}
+										<div class="flashbags">
+											{% for type, messages in app.flashes %}
+												{% sw_include '@Storefront/storefront/utilities/alert.html.twig' with { type: type, list: messages } %}
+											{% endfor %}
+										</div>
+									{% endblock %}
+
+									{% block page_checkout_main_content %}{% endblock %}
+
+								</div>
+							{% endblock %}
+
+							{% block page_checkout_additional %}{% endblock %}
+
+							{% block page_checkout_aside %}
+								<div class="page-checkout-aside col-md-6 d-none d-sm-block">
+									{% block page_checkout_aside_container %}
+										<div class="checkout-aside-container">
+											{% block page_checkout_aside_summary %}
+												<div class="checkout-aside-summary">
+													{% block page_checkout_summary_header %}
+														<h3 class="checkout-aside-summary-header">
+															Products ({{page.cart.lineItems|length}})
+														</h3>
+													{% endblock %}
+
+													{% block page_checkout_summary_list %}
+														<div class="checkout-aside-summary-list-container">
+															{% block page_checkout_summary_list_container %}
+																{% sw_include '@Storefront/storefront/page/checkout/cvp-summary.html.twig' %}
+															{% endblock %}
+														</div>
+													{% endblock %}
+												</div>
+											{% endblock %}
+
+											{% block page_checkout_aside_actions %}{% endblock %}
+										</div>
+									{% endblock %}
+								</div>
+							{% endblock %}
+
+							{% block block_checkout_minimal %}
+								<div class="checkout-minimal d-sm-none">
+									<div class="collapse" id="navbarToggleExternalContent">
+										<div class="checkout-aside-container">
+											<div class="checkout-aside-summary">
+												<a href="#" class="checkout-aside-summary-close" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+													close
+												</a>
+												<div class="checkout-aside-summary-list-container">
+													{% sw_include '@Storefront/storefront/page/checkout/cvp-summary.html.twig' with {noTotal: "true"} %}
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<nav class="navbar checkout-summary">
+										{% if page.cart %}
+											{% set summary = page.cart %}
+										{% elseif page.order %}
+											{% set summary = page.order %}
+										{% endif %}
+
+										<a href="#" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+											details
+											<h4>{{ summary.price.totalPrice|currency }}</h4>
+										</a>
+
+										<a href="#register-submit" class="checkout-summary-link">Buy now</a>
+									</nav>
+								</div>
+							{% endblock %}
+						</div>
+					{% endblock %}
+				</div>
+			{% endblock %}
+		{% endblock %}
+	</div>
+{% endblock %}
+
+
+{% block base_footer %}
+	{% sw_include '@Storefront/storefront/layout/footer/footer.html.twig' %}
+{% endblock %}

@@ -1,0 +1,21 @@
+.cms-breadcrump {
+  padding: 1.5rem 0;
+  background: rgba(219, 217, 210, 0.24);
+
+  .breadcrumb-container > a {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: normal;
+    color: #181818;
+
+    &:first-child::after {
+      content: "/";
+      display: inline-block;
+      margin: 0 0.5rem;
+    }
+
+    &.is-active {
+      color: #8c8c8c;
+    }
+  }
+}

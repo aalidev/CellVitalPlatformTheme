@@ -1,0 +1,31 @@
+{% set element = block.slots.getSlot('content') %}
+{% set title = block.slots.getSlot('title') %}
+{% set media = block.slots.getSlot('media') %}
+{% set description = block.slots.getSlot('description') %}
+
+{% block block_partner_form_container %}
+    <div class="partner-container col-12">
+        <div class="row">
+            {% block block_partner_form  %}
+                <div class="partner-form col-sm-auto col-md-6">
+                    {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig"  %}           
+                </div>
+            {% endblock %}
+            {% block block_partner_content  %}
+                <div class="partner-container-content col-sm-auto col-md-6">
+                    {% block block_partner_title %}
+                        {{ title.data.content|raw }}
+                    {% endblock %}
+                    {% block block_partner_media %}
+                        <div class="partner-media">
+                            <img src={{media.data.media.url}} alt="" />
+                        </div>
+                    {% endblock %}
+                    {% block block_partner_description %}
+                        {{ description.data.content|raw }}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

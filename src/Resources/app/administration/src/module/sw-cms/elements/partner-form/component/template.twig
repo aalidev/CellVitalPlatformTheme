@@ -1,0 +1,13 @@
+{% block sw_cms_element_partner_form_block %}
+    <div class="sw-cms-el-form-partner">
+        <h3 class="sw-cms-el-form-headline" v-if="element.config.title.value.length">
+            {{ element.config.title.value }}
+        </h3>
+        <div class="sw-cms-el-form-partner-form-group">
+            <sw-text-field label="Your full name" value=""></sw-text-field>
+            <sw-text-field label="Phone number" value=""></sw-text-field>
+            <sw-text-field label="Address" value=""></sw-text-field>
+            <sw-text-field label="E-mail" value=""></sw-text-field>
+        </div>
+    </div>
+{% endblock %}

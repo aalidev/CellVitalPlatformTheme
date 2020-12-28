@@ -1,4 +1,13 @@
 import "./module/sw-cms/blocks/text-image/image-text-background";
 import "./module/sw-cms/blocks/text-image/text-image-two-column";
 import "./module/sw-cms/blocks/text-image/benefits-list";
+import "./module/sw-cms/blocks/text-image/benefits-list-v2";
+import "./module/sw-cms/blocks/text-image/article";
 import "./module/sw-cms/blocks/commerce/cvp-product-slider";
+import "./module/sw-cms/blocks/commerce/cvp-review-slider";
+import "./module/sw-cms/blocks/commerce/contact";
+import "./module/sw-cms/blocks/text/ask-anything";
+import "./module/sw-cms/blocks/text-image/text-image-tab";
+import "./module/sw-cms/blocks/form/partner-form";
+import "./module/sw-cms/elements/partner-form";
+import "./module/sw-cms/blocks/commerce/events";

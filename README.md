@@ -1,3 +1,1 @@
-# CellVitalPlatformTheme
-
-Theme for Cellvital project
+# cellvital-shopware-theme

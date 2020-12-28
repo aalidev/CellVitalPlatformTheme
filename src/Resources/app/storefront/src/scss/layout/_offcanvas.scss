@@ -1,0 +1,46 @@
+.navigation-offcanvas-list-item .navigation-offcanvas-link {
+  font-size: 28px;
+  line-height: 40px;
+  color: #78695e;
+
+  &.active {
+    color: #f2a761;
+  }
+}
+
+.navigation-offcanvas-overlay-content {
+  padding-top: 2rem;
+}
+
+.navigation-offcanvas-list-item,
+.navigation-offcanvas-list-item:last-child {
+  border: none;
+}
+
+.offcanvas-cart-action {
+  display: flex;
+  margin: 1rem 0 2rem;
+
+  a {
+    width: 100%;
+    border-radius: 12px;
+    padding: 5px 0;
+
+    &:first-child {
+      margin-right: 1rem;
+    }
+
+    &:last-child {
+      color: #fff;
+    }
+  }
+}
+
+.offcanvas-language {
+  text-align: end;
+  margin-right: 1rem;
+}
+
+.offcanvas-navigation {
+  padding: 7px;
+}

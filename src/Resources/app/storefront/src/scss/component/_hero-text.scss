@@ -1,0 +1,28 @@
+.hero-text-content {
+  h1,
+  p {
+    color: #181818;
+  }
+
+  h1 {
+    margin-bottom: 48px;
+  }
+
+  hr {
+    border: none;
+    width: 8px;
+    height: 64px;
+    background: #78695e;
+    display: inline-block;
+    margin: 0;
+    vertical-align: top;
+    margin-right: 24px;
+  }
+
+  p {
+    width: 87%;
+    max-width: 672px;
+    display: inline-block;
+    margin: 0;
+  }
+}

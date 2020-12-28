@@ -1,0 +1,107 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_head %}
+	{{ parent() }}
+
+    {% sw_include '@Storefront/storefront/page/product-detail/meta.html.twig' %}
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block base_navigation %}{% endblock %}
+
+{% block base_content %}
+    {% block page_product_detail %}
+	<div class="product-detail"
+             itemscope
+             itemtype="https://schema.org/Product">
+            {% block page_product_detail_inner %}
+				{% block page_product_detail_content %}
+
+					<div class="product-detail-content">
+						{% block page_product_detail_breadcrumb %}
+							{% block cms_breadcrumb %}
+								{% sw_include '@Storefront/storefront/component/listing/breadcrumb.html.twig' %}
+							{% endblock %}
+						{% endblock %}
+
+						{% if page.product.customFields.custom_description_award %}
+							{% set awardMediaId = page.product.customFields.custom_description_award %}
+							{% set mediaCollection = searchMedia([awardMediaId], context.context) %}
+							{% set awardMedia = mediaCollection.get(awardMediaId) %}
+							<img src="{{ awardMedia.url }}" class="product-detail-award"/>
+						{% endif %}
+
+						{% set mediaItems = page.product.media.media %}
+
+						{% block page_product_detail_main %}
+							<div class="row product-detail-main">
+								{% block page_product_detail_media %}
+									{% block page_product_detail_buy %}
+										<div class="col-lg-6 product-detail-buy">
+											{% block page_product_detail_headline %}
+												{% sw_include '@Storefront/storefront/page/product-detail/headline.html.twig' %}
+											{% endblock %}
+											{% block page_product_detail_price %}
+												<div class="page-product-detail-total">
+													<h3>{{page.product.calculatedPrices.first.unitPrice|currency}}</h3>
+												</div>
+											{% endblock %}
+											{% block page_product_detail_rating %}
+												{% sw_include '@Storefront/storefront/page/product-detail/rating.html.twig' %}
+											{% endblock %}
+
+											{% block page_product_detail_actions %}
+												{% sw_include "@Storefront/storefront/page/product-detail/buy-widget-form.html.twig" %}
+											{% endblock %}
+
+
+											{% block page_product_detail_tabss %}
+												{% sw_include "@Storefront/storefront/page/product-detail/product-detail-tabs.html.twig" %}
+											{% endblock %}
+										</div>
+									{% endblock %}
+
+									<div class="col-lg-6 product-detail-media">
+										{% if page.product.media %}
+											{% sw_include '@Storefront/storefront/element/cms-element-image-gallery.html.twig' with {
+												'mediaItems': mediaItems,
+												'zoom': false,
+												'zoomModal': false,
+												'displayMode': 'cover',
+												'gutter': 5,
+												'minHeight': '950px',
+												'navigationArrows': 'inside',
+												'navigationDots': 'inside',
+												'galleryPosition': 'left',
+												'isProduct': true,
+												'fallbackImageTitle': page.product.translated.name,
+												'startIndexThumbnails': page.product.cover.position + 1,
+												'startIndexSlider': page.product.cover.position + 1
+											} %}
+										{% endif %}
+									</div>
+								{% endblock %}
+							</div>
+							{{ page.product.customFields.custom_description_html|raw }}
+						{% endblock %}
+					</div>
+				{% endblock %}
+			{% endblock %}
+		</div>
+	
+	{% endblock %}
+{% endblock %}
+
+{% block base_main_container %}
+	{{parent()}}
+	{% block product_reviews %}
+		<div class="product-reviews row ">
+			{% sw_include "@Storefront/storefront/block/cms-block-cvp-review-slider.html.twig" with {additionalClass: 'p-0'}%}
+		</div>
+	{% endblock %}
+{% endblock %}
+
+
+{% block base_footer %}
+	{% sw_include '@Storefront/storefront/layout/footer/footer.html.twig' %}
+{% endblock %}

@@ -1,0 +1,111 @@
+{% sw_extends '@Storefront/storefront/page/checkout/page.html.twig' %}
+
+{% block base_head %}
+	{% sw_include '@Storefront/storefront/page/checkout/cart/meta.html.twig' %}
+{% endblock %}
+
+{% block page_checkout_container %}
+	{% if page.cart.lineItems.count is same as(0) %}
+		{% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+            type: "info",
+            content: "checkout.cartEmpty"|trans|sw_sanitize
+        } %}
+	{% else %}
+		{{ parent() }}
+	{% endif %}
+{% endblock %}
+
+{% block page_checkout_main_content %}
+	{% block page_checkout_cart %}
+		{% block page_checkout_cart_header %}
+			<h1 class="cart-main-header">
+				Shopping bag ({{page.cart.lineItems|length}})
+			</h1>
+		{% endblock %}
+
+		{% block page_checkout_cart_product %}
+			<div class="checkout-cart-product">
+				{% block page_checkout_cart_table_items %}
+					{% for lineItem in page.cart.lineItems %}
+						{% block page_checkout_cart_table_item %}
+							{% block page_checkout_item %}
+								{% sw_include '@Storefront/storefront/page/checkout/checkout-item.html.twig' %}
+							{% endblock %}
+						{% endblock %}
+					{% endfor %}
+				{% endblock %}
+			</div>
+		{% endblock %}
+
+		{% block page_checkout_cart_hidden_line_items_information %}
+			{% sw_include '@Storefront/storefront/component/checkout/hidden-line-items-information.html.twig' with {
+                lineItems: page.cart.lineItems
+            } %}
+		{% endblock %}
+
+		{% block page_checkout_cart_detail %}
+
+			<div class="checkout-detail-container">
+				<div class="checkout-detail">
+					{% set totalQuantity = 0 %}
+
+					{% for val in page.cart.lineItems %}
+						{% set totalQuantity = totalQuantity + val.quantity %}
+					{% endfor %}
+
+					{% block page_checkout_cart_discount %}
+						<form action="{{ path('frontend.checkout.promotion.add') }}" class="cart-add-promotion" data-form-csrf-handler="true" method="post">
+
+							{% block page_checkout_cart_add_promotion_csrf %}
+								{{ sw_csrf('frontend.checkout.promotion.add') }}
+							{% endblock %}
+
+							{% block page_checkout_cart_add_promotion_forward %}
+								<input type="hidden" name="forwardTo" value="frontend.checkout.cart.page">
+							{% endblock %}
+
+							{% block page_checkout_cart_add_promotion_input_group %}
+								<div class="checkout-detail-discount">
+									{% block cms_form_discount %}
+										{% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-discount.html.twig' with {
+										fieldName: 'code',
+										required: true,
+										label: 'Discount code',
+									} %}
+									{% endblock %}
+								</div>
+							{% endblock %}
+						</form>
+					{% endblock %}
+
+
+					{% block page_checkout_cart_total %}
+						{% if page.cart %}
+							{% set summary = page.cart %}
+						{% elseif page.order %}
+							{% set summary = page.order %}
+						{% endif %}
+
+						<div class="d-sm-none checkout-cart-total quantity">
+							<p>Goods</p>
+							<h4>{{totalQuantity}}</h4>
+						</div>
+
+						<div class="checkout-cart-total">
+							<p>Total</p>
+							<h4>{{summary.price.totalPrice|currency}}</h4>
+						</div>
+					{% endblock %}
+
+					{% block page_checkout_cart_action_proceed %}
+						<div class="checkout-cart-action">
+							<a href="{{ path('frontend.checkout.confirm.page') }}" class="btn btn-primary btn-block btn-lg begin-checkout-btn" title="{{ "checkout.proceedLink"|trans|striptags }}">
+								Go to Сheck out
+							</a>
+						</div>
+					{% endblock %}
+				</div>
+			</div>
+		{% endblock %}
+	{% endblock %}
+{% endblock %}

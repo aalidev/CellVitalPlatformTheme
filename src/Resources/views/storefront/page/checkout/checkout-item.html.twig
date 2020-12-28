@@ -1,0 +1,111 @@
+{% block page_checkout_item %}
+	{% block page_checkout_item_container %}
+		<div class="col-12 px-0 d-flex justify-content-between checkout-item {{additionalClass}}">
+			<div class="checkout-item-image">
+				{% block page_checkout_item_info_image_element %}
+					{% if lineItem.cover.url %}
+						{% sw_thumbnails 'cart-item-img-thumbnails' with {
+                            media: lineItem.cover,
+                            sizes: {
+                                'default': '100px'
+                            },
+                            attributes: {
+                                'class': 'img-fluid cart-item-img',
+                                'alt': (lineItem.cover.translated.alt ?: ''),
+                                'title': (lineItem.cover.translated.title ?: '')
+                            }
+                        } %}
+					{% else %}
+						{% sw_icon 'placeholder' style {
+                            'size': 'fluid'
+                        } %}
+					{% endif %}
+				{% endblock %}
+			</div>
+
+			{% block page_checkout_item_info %}
+				<div class="checkout-item-details">
+					<a href="{{ seoUrl('frontend.detail.page', {'productId': lineItem.referencedId}) }}" class="cart-item-label" title="{{ lineItem.label }}" {% if controllerAction is same as('confirmPage') %} data-toggle="modal" data-modal-class="quickview-modal" data-url="{{ path('widgets.quickview.minimal',{ 'productId': lineItem.referencedId }) }}" {% endif %}>
+						{{ lineItem.label|u.truncate(60) }}
+					</a>
+					<div class="checkout-item-reverse">
+						<div class="checkout-item-quantity">
+							{% block page_checkout_item_quantity_form %}
+								{% if lineItem.quantityInformation and lineItem.stackable %}
+									<form action="{{ path('frontend.checkout.line-item.change-quantity', {'id': lineItem.id}) }}" class="checkout-item-quantity-container" method="post" data-form-auto-submit="true">
+
+										{% block page_checkout_item_quantity_form_csrf %}
+											{{ sw_csrf('frontend.checkout.line-item.change-quantity') }}
+										{% endblock %}
+
+										{% block page_checkout_item_quantity_redirect %}
+											<input type="hidden" name="redirectTo" value="{% if redirectTo %}{{redirectTo}}{% else %}frontend.checkout.cart.page{% endif %}">
+										{% endblock %}
+
+										{# @var quantityInformation \Shopware\Core\Checkout\Cart\LineItem\QuantityInformation #}
+										{% set quantityInformation = lineItem.quantityInformation %}
+										{% if quantityInformation.maxPurchase %}
+											{% set maxQuantity = quantityInformation.maxPurchase %}
+										{% else %}
+											{% set maxQuantity = shopware.config.core.cart.maxQuantity %}
+										{% endif %}
+
+										{% block page_product_detail_buy_quantity %}
+											<div class="quantity-turn">
+												{% if lineItem.quantity <= 1 %}
+													<input id="quantity-turn-{{loop.index}}" type="submit" name="quantity" value={{lineItem.quantity - 1}} disabled/>
+												{% else %}
+													<input id="quantity-turn-{{loop.index}}" type="submit" name="quantity" value={{lineItem.quantity - 1}}/>
+												{% endif %}
+
+												<label for="quantity-turn-{{loop.index}}" class=" {% if lineItem.quantity <= 1 %}quantity-disabled{% endif %}">&ndash;</label>
+											</div>
+
+											<p class="quantity-total">{{lineItem.quantity}}</p>
+
+											<div class="quantity-add">
+												<input id="quantity-add-{{loop.index}}" type="submit" name="quantity" value={{lineItem.quantity + 1}}/>
+												<label for="quantity-add-{{loop.index}}">+</label>
+											</div>
+										{% endblock %}
+
+									</form>
+								{% endif %}
+							{% endblock %}
+						</div>
+						<div class="checkout-item-price">
+							<h4>{{ lineItem.price.unitPrice|currency }}</h4>
+							<span>{{lineItem.price.unitPrice|currency}}</span>
+						</div>
+					</div>
+				</div>
+
+
+				{% block page_checkout_item_delete %}
+					<div class="checkout-item-delete ">
+						{% block page_checkout_item_remove_form %}
+							{% if lineItem.removable %}
+								<form action="{{ path('frontend.checkout.line-item.delete', {'id': lineItem.id}) }}" method="post" data-form-csrf-handler="true">
+
+									{% block page_checkout_item_remove_form_csrf %}
+										{{ sw_csrf('frontend.checkout.line-item.delete') }}
+									{% endblock %}
+
+									{% block page_checkout_item_remove_redirect %}
+										<input type="hidden" name="redirectTo" value="{% if redirectTo %}{{redirectTo}}{% else %}frontend.checkout.cart.page{% endif %}">
+									{% endblock %}
+
+									{% block page_checkout_item_remove_submit %}
+										<button type="submit" title="{{ "checkout.removeLineItem"|trans|striptags }}" data-product-id="{{ lineItem.id }}" class="btn btn-light btn-sm cart-item-remove-button">
+											<img src={{asset("/bundles/cellvitalplatformtheme/assets/delete-bag.svg")}} alt="delete bag"/>
+										</button>
+									{% endblock %}
+								</form>
+							{% endif %}
+						{% endblock %}
+					</div>
+				{% endblock %}
+			{% endblock %}
+		</div>
+	{% endblock %}
+{% endblock %}

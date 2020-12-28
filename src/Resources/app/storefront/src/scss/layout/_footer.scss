@@ -1,0 +1,65 @@
+.footer {
+  background-color: #4d423a;
+}
+
+.footer-container {
+  padding: 64px 0;
+}
+
+.footer-item {
+  color: #fff;
+
+  h4 {
+    color: inherit;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+
+    @media (max-width: 600px) {
+      margin-bottom: 1rem;
+    }
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+
+    li {
+      margin-bottom: 1rem;
+    }
+
+    li > a {
+      text-decoration: underline;
+      color: inherit;
+      font-size: 14px;
+      line-height: 24px;
+    }
+  }
+}
+
+.footer-copyright {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  h4 {
+    margin-bottom: 24px;
+  }
+
+  h4,
+  p {
+    text-align: end;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.footer-payments {
+  background: url("/bundles/cellvitalplatformtheme/assets/payments-mc.png")
+    no-repeat center #dadfe2;
+  background-size: auto 48px;
+  color: #000;
+  height: 52px;
+  padding: 1;
+}

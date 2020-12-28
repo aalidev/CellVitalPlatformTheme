@@ -1,0 +1,59 @@
+{% sw_extends "@Storefront/storefront/block/cms-block-product-slider.html.twig" %}
+
+{% block block_product_slider %}
+    {% set element = block.slots.getSlot('productSlider') %}
+    {% set items = [
+        {rating: 4.5, title: 'Entrepreneur 60 years old', date: '10/28/12', name: 'Gussi', description: '"I had bad shoulder pain, could hardly sleep on my side at night, but after about 2 weeks of Cellvital homecare therapy, the pain on both sides was simply gone to this day! My tinnitus has definitely improved by more than half, my sleep a lot more relaxing and deeper, and what I particularly notice, the Cellvital homecare device also touches the soul In addition to my experience, I can also tell you about my family: // One of my dogs, the little one always stays with me for a while. // My husband also loves the mat, when he lies down on it, he often falls asleep for', images: ['one', 'tow'],},
+        {rating: 4.5, title: 'Foot trainer sports therapist', date: '10/28/12', name: 'Bob Bonkowski', description: '"I had bad shoulder pain, could hardly sleep on my side at night, but after about 2 weeks of Cellvital homecare therapy, the pain on both sides was simply gone to this day! My tinnitus has definitely improved by more than half, my sleep a lot more relaxing and deeper, and what I particularly notice, the Cellvital homecare device also touches the soul In addition to my experience, I can also tell you about my family: // One of my dogs, the little one always stays with me for a while. // My husband also loves the mat, when he lies down on it, he often falls asleep for', images: ['one']}
+    ] %}
+    
+  <div class="col-12 {{additionalClass}}" data-cms-element-id="{{ element.id }}">
+        {% block block_product_slider_inner %}
+            {% block element_product_slider %}
+                <div class="cms-element-{{ element.type }}{% if sliderConfig.displayMode.value == "standard" and sliderConfig.verticalAlign.value %} has-vertical-alignment{% endif %}">
+                    {% block element_product_slider_alignment %}
+                            {% set productSliderOptions = {
+                                productboxMinWidth: '804',
+                                slider: {
+                                    gutter: 20,
+                                    autoplayButtonOutput: false,
+                                    nav: true,
+                                    controls: false,
+                                    mouseDrag: true,
+                                }
+                            } %}
+
+                            {% block element_product_slider_slider %}
+                                <div class="container base-slider review-slider{% if sliderConfig.border.value %} has-border {% endif %}"
+                                    data-product-slider="true"
+                                    data-product-slider-options="{{ productSliderOptions|json_encode }}">
+
+                                    {% block element_review_slider_title %}
+                                            <h2 class="review-slider-title">Reviews</h2>
+                                    {% endblock %}
+
+                                    {% block element_review_slider_inner %}
+                                        {% block element_review_slider_element %}
+                                            <div class="review-slider-container"
+                                                data-product-slider-container="true">
+                                                {% for item in items %}
+                                                    {% block element_product_slider_inner_item %}
+                                                        <div class="review-slider-item">
+                                                            {% sw_include '@Storefront/storefront/component/product/card/cvp-review.html.twig' with {'item': item} %}
+                                                        </div>
+                                                    {% endblock %}
+                                                {% endfor %}
+                                            </div>
+                                        {% endblock %}
+                                    {% endblock %}
+                                </div>
+                            {% endblock %}
+                        {% if config.verticalAlign.value %}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        {% endblock %}
+    </div>
+{% endblock %}

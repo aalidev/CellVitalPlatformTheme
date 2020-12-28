@@ -1,0 +1,15 @@
+{% block block_product_rating %}
+	<div class="product-rating-container">
+		<div class="product-rating-items">
+			<span class="product-rating-title">Rating:</span>
+			<span>{{page.product.ratingAverage}}</span>
+			<img src={{asset('/bundles/cellvitalplatformtheme/assets/star.svg')}} alt="star"/>
+			<span class="point">•</span>
+			<span class="product-rating-title">Orders:</span>
+			<span>{{page.product.availableStock}}</span>
+		</div>
+		<div class="product-rating-report">
+			<a href="#">Report item</a>
+		</div>
+	</div>
+{% endblock %}

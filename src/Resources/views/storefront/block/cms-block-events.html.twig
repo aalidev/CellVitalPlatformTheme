@@ -1,0 +1,43 @@
+{% set items = [
+	{
+		day: 1,
+		title: "Basic training 🌿",
+		description: "Basic training in physiology and psychology"
+	},
+	{
+		day: 2,
+		title: "Magnetic field application 💊",
+		description: "Immerse yourself in the world of the right resonance application for magnetic therapy"
+	},
+	{
+		day: 3,
+		title: "Sales training and product training 💰",
+		description: "From the experience of many years of experience, we address precisely those topics that will quickly bring you a noticeable increase in sales performance"
+	}
+] %}
+
+{% block block_events %}
+	<div class="col-12">
+		<div class="row justify-content-end">
+			<div class="col-md-6 block-events-container">
+				<h2 class="block-contact-title">Events</h2>
+				{% block block_events_container %}
+					<div class="block-event-items">
+						{% for item in items %}
+							{% block block_events_item %}
+								<div class="block-event-item">
+									<p class="block-event-day">Day
+										{{item.day}}</p>
+									<div class="block-event-content">
+										<h4>{{item.title}}</h4>
+										<p>{{item.description}}</p>
+									</div>
+								</div>
+							{% endblock %}
+						{% endfor %}
+					</div>
+				{% endblock %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

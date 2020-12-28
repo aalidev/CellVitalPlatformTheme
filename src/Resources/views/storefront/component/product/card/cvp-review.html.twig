@@ -1,0 +1,27 @@
+{% sw_extends "@Storefront/storefront/component/product/card/box.html.twig" %}
+
+{% block component_product_box_include %}
+    <div class="cvp-review-content">
+        <div class="cvp-review-rating">
+            {% sw_include '@Storefront/storefront/component/review/rating.html.twig' with {
+                points: item.rating,
+                style: 'text-primary'
+            } %}
+        </div>
+        <h4 class="cvp-review-position">Foot trainer sports therapist</h4>
+        <div class="cvp-review-name">
+            <span>{{item.name}}</span><span>•</span><span>{{item.date}}</span>
+        </div>
+
+        <p class="cvp-review-description">{{item.description|raw}}</p>
+        <p class="cvp-review-description"><a style="color: #F2A761" href="#">read more</a></p>
+
+        <div class="cvp-review-images">
+            {% for image in item.images %}
+                <div class="cvp-review-image">
+                    {# image url #}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

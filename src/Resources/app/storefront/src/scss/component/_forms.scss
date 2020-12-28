@@ -1,0 +1,92 @@
+.partner-form > form {
+  max-width: 496px;
+}
+
+.form-content {
+  background-color: rgba(219, 217, 210, 0.24);
+  padding: 2.5rem;
+  border-radius: 0.75rem;
+
+  h3 {
+    color: #181818;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.form-control {
+  min-height: 3.5rem;
+  padding: 0.875rem 1rem 0 1.5rem;
+  font-size: 1rem;
+  border-radius: 0.75rem;
+
+  &:focus + .form-label,
+  &:not(:invalid) + .form-label {
+    transform: translateY(-110%);
+  }
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  color: #8c8c8c;
+  position: absolute;
+  margin-bottom: 0.1875rem;
+  top: 50%;
+  left: 1.5625rem;
+  transform: translateY(-50%);
+  transition: transform 150ms ease-in;
+}
+
+.form-submit-btn {
+  background-color: #f2a761;
+  min-width: 248px;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 0.75rem;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  margin-top: 1.5rem;
+}
+
+.form-login {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  max-width: 110px;
+  margin-top: 1.55rem;
+  text-align: end;
+  color: #f2a761;
+}
+
+@media (max-width: 600px) {
+  .form-submit-btn {
+    min-width: 100%;
+    padding: 1rem;
+  }
+
+  .form-content {
+    padding: 3rem 1rem 5rem;
+  }
+
+  .form-login {
+    max-width: 100%;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.form-group-discount-send {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  button {
+    background-color: transparent;
+    border: none;
+  }
+}

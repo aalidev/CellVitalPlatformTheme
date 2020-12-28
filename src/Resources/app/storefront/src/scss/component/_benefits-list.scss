@@ -1,14 +1,9 @@
 .cvp-benefits-list {
-  margin-top: 120px;
-  margin-bottom: 120px;
-
-  @media (max-width: 600px) {
-    margin-top: 48px;
-    margin-bottom: 48px;
-  }
+  margin-top: 48px;
+  margin-bottom: 48px;
 }
 
-.cvp-benefits-list-content {
+.cvp-benefits-list-item {
   .benefits-icon {
     width: 64px;
     height: 64px;
@@ -30,5 +25,43 @@
       font-size: 20px;
       line-height: 32px;
     }
+  }
+}
+
+.benefits-second {
+  h2 {
+    color: #181818;
+    margin-bottom: 3rem;
+  }
+}
+
+.benefits-second-content {
+  padding-right: 2rem;
+  margin-bottom: 1.5rem;
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+    color: #181818;
+
+    & > strong {
+      font-weight: 500;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .cvp-benefits-list-item {
+    padding-left: 1.5rem;
+    margin: 0 0 1.5rem 1.5rem;
+    border-left: 2px dashed rgba(219, 217, 210, 0.6);
+
+    & > p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .cvp-benefits-list {
+    margin: 0;
   }
 }

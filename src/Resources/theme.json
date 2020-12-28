@@ -1,6 +1,6 @@
 {
   "name": "CellVitalPlatformTheme",
-  "author": "Alisher Ali",
+  "author": "Shopware AG",
   "views": [
      "@Storefront",
      "@Plugins",

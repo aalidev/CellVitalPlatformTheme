@@ -1,0 +1,76 @@
+{% block page_checkout_summary %}
+	<div class="checkout-aside-summary-container">
+		{% if page.cart %}
+			{% set summary = page.cart %}
+		{% elseif page.order %}
+			{% set summary = page.order %}
+		{% endif %}
+
+		{% block page_checkout_cart_table_items %}
+			{% for lineItem in page.cart.lineItems %}
+				{% block page_checkout_cart_table_item %}
+					{% block page_checkout_item %}
+						{% sw_include '@Storefront/storefront/page/checkout/checkout-item.html.twig' with {additionalClass: 'aside', redirectTo: "frontend.checkout.cart.page"}%}
+					{% endblock %}
+				{% endblock %}
+			{% endfor %}
+		{% endblock %}
+
+		{% block page_checkout_cart_discount %}
+			<form action="{{ path('frontend.checkout.promotion.add') }}" class="cart-add-promotion" data-form-csrf-handler="true" method="post">
+
+				{% block page_checkout_cart_add_promotion_csrf %}
+					{{ sw_csrf('frontend.checkout.promotion.add') }}
+				{% endblock %}
+
+				{% block page_checkout_cart_add_promotion_forward %}
+					<input type="hidden" name="forwardTo" value="frontend.checkout.register.page">
+				{% endblock %}
+
+				{% block page_checkout_cart_add_promotion_input_group %}
+					<div class="checkout-detail-discount">
+						{% block cms_form_discount %}
+							{% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-discount.html.twig' with {
+										fieldName: 'code',
+										required: true,
+										label: 'Discount code',
+									} %}
+						{% endblock %}
+					</div>
+				{% endblock %}
+			</form>
+		{% endblock %}
+		{% block page_checkout_summary_total %}
+			{% if noTotal != "true" %}
+				<div class="d-flex justify-content-between">
+					{% block page_checkout_summary_total_label %}
+						<dt class="checkout-aside-summary-label checkout-aside-summary-total">
+							{{ "checkout.summaryTotalPrice"|trans|sw_sanitize }}
+						</dt>
+					{% endblock %}
+
+					{% block page_checkout_summary_total_value %}
+						<dd class="checkout-aside-summary-value checkout-aside-summary-total">
+							{{ summary.price.totalPrice|currency }}
+						</dd>
+					{% endblock %}
+				</div>
+			{% endif %}
+		{% endblock %}
+
+		{% if actions == "true" %}
+			{% block page_checkout_cart_action_proceed %}
+				<div class="offcanvas-cart-action">
+					<a href="{{ path('frontend.checkout.cart.page') }}" class="btn btn-outline-primary btn-lg begin-checkout-btn" title="{{ "checkout.proceedLink"|trans|striptags }}">
+						View Bag
+					</a>
+
+					<a href="{{ path('frontend.checkout.confirm.page') }}" class="btn btn-primary btn-lg begin-checkout-btn" title="{{ "checkout.proceedLink"|trans|striptags }}">
+						Go to Сheck out
+					</a>
+				</div>
+			{% endblock %}
+		{% endif %}
+
+	</div>
+{% endblock %}

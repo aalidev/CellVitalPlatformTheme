@@ -1,0 +1,44 @@
+{% block cms_block_text_image_tab %}
+    {% set tabItems = [
+        block.slots.getSlot('first'), 
+        block.slots.getSlot('second'), 
+        block.slots.getSlot('third'), 
+        block.slots.getSlot('fourth'),
+        block.slots.getSlot('fifth') 
+        ] 
+    %}
+
+    <div class="col-12 tabs-container">
+        <div class="container">
+            <h2>Services</h2>
+            <div class="block-navigation-tabs">
+                {% block navigation_tab_itemms %}
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        {% for tab in tabItems %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if tab.slot == 'first' %}active{% endif %}" id={{tab.slot ~ "-tab"}} data-toggle="tab" href="#{{tab.slot}}" role="tab" aria-controls={{tab.slot}} aria-selected="false">Service #{{loop.index}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endblock %}
+            </div>        
+    </div>
+    <div class="col-12">
+        {% block navigation_tab_itemms_content %}
+            <div class="tab-content" id="myTabContent">
+                {% for tab in tabItems %}
+                    <div class="tab-pane container fade show {% if tab.slot == 'first' %}active{% endif %}" id={{tab.slot}} role="tabpanel" aria-labelledby={{tab.slot ~ "-tab"}}>{{tab.data.content | raw}}
+                        <div class="tab-content-images">
+                            <img src={{ asset('/bundles/cellvitalplatformtheme/assets/tab1.png') }}
+                                alt=""
+                                class="tab-image"/>
+                            <img src={{ asset('/bundles/cellvitalplatformtheme/assets/tab2.png') }}
+                                alt=""
+                                class="tab-image"/>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

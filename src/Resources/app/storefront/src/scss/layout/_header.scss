@@ -1,28 +1,41 @@
 .cvp-header-row {
-    padding: 1rem 0;
+  padding: 1rem 0;
 }
 
 .header-main {
-    background: #e3e3e3;
+  background: #fff;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .cvp-logo {
-    max-width: 64px;
+  max-width: 64px;
 }
 
 .cvp-cart-badge {
-    position: absolute;
-    top: 2px;
-    right: 6px;
-    display: flex;
-    justify-content: center;
-    width: 16px;
-    align-items: center;
-    height: 16px;
-    border-radius: 50%;
-    background: #78695e;
-    text-align: center;
-    color: #fff;
-    font-size: 9px;
-    padding: 0px;
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  display: flex;
+  justify-content: center;
+  width: 16px;
+  align-items: center;
+  height: 16px;
+  border-radius: 50%;
+  background: #78695e;
+  text-align: center;
+  color: #fff;
+  font-size: 9px;
+  padding: 0px;
+  border: 2px solid #fff;
+  box-sizing: content-box;
+}
+
+@media (max-width: 600px) {
+  .cvp-logo {
+    max-width: 40px;
+  }
+
+  .cvp-header-row {
+    padding: 4px 0;
+  }
 }

@@ -1,0 +1,51 @@
+{% block block_partner_form %}
+    <form>
+        <div class="form-content">
+            <h3>{{element.config.title.value}}</h3>
+            {% block cms_form_partner_input_full_name %}
+                {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-input.html.twig'
+                    with {
+                    fieldName: 'fullName',
+                    required: true,
+                    label: 'Your full name',
+                    }
+                %}
+            {% endblock %}
+            {% block cms_form_partner_input_phone_number %}
+                {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-input.html.twig'
+                    with {
+                    fieldName: 'phoneNumber',
+                    required: true,
+                    label: 'Phone number',
+                    }
+                %}
+            {% endblock %}
+            {% block cms_form_partner_input_address %}
+                {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-input.html.twig'
+                    with {
+                    fieldName: 'address',
+                    required: true,
+                    label: 'Address',
+                    }
+                %}
+            {% endblock %}
+            {% block cms_form_partner_input_email %}
+                {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-input.html.twig'
+                    with {
+                    fieldName: 'email',
+                    required: true,
+                    label: 'E-mail',
+                    }
+                %}
+            {% endblock %}
+
+            {% block cms_form_partner_submit %}
+                {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-submit.html.twig' %}
+            {% endblock %}
+
+            {% block cms_form_partner_login %}
+                {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-login.html.twig' %}
+            {% endblock %}
+        </div>
+    </form>
+{% endblock %}
