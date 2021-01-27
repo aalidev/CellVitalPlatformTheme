@@ -1,41 +1,3 @@
-.navigation-offcanvas-list-item .navigation-offcanvas-link {
-  font-size: 28px;
-  line-height: 40px;
-  color: #78695e;
-
-  &.active {
-    color: #f2a761;
-  }
-}
-
-.navigation-offcanvas-overlay-content {
-  padding-top: 2rem;
-}
-
-.navigation-offcanvas-list-item,
-.navigation-offcanvas-list-item:last-child {
-  border: none;
-}
-
-.offcanvas-cart-action {
-  display: flex;
-  margin: 1rem 0 2rem;
-
-  a {
-    width: 100%;
-    border-radius: 12px;
-    padding: 5px 0;
-
-    &:first-child {
-      margin-right: 1rem;
-    }
-
-    &:last-child {
-      color: #fff;
-    }
-  }
-}
-
 .offcanvas-language {
   text-align: end;
   margin-right: 1rem;
@@ -43,4 +5,88 @@
 
 .offcanvas-navigation {
   padding: 7px;
+}
+.offcanvas-cart {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .cart-item {
+    border-color: #DBD9D2;
+  }
+  .cart-item-img {
+    width: 64px;
+    height: 64px;
+    border: 1px solid #DBD9D2;
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+  }
+  .cart-item-label {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+    color: #f2a761;
+
+    & > span {
+      color: #181818;
+    }
+  }
+  .cart-item-details {
+    margin: 0 0 12px !important;
+  }
+  .cart-item-price {
+    margin-left: 0;
+    font-size: 17px;
+    line-height: 24px;
+  }
+  .cart-quantity-price {
+    min-height: auto;
+  }
+
+  .cart-item-remove-button {
+    background-color: transparent;
+    border: none;
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+.offcanvas-content-container {
+  padding: 0 !important;
+  height: calc(100% - 52px);
+}
+.offcanvas-cart-header {
+  margin: 0;
+}
+.offcanvas-cart-items {
+  overflow-y: auto;
+  min-height: 116px;
+  flex-grow: 1;
+}
+.offcanvas-cart-actions {
+  border-radius: 20px 20px 0 0;
+  padding: 1.5rem 1rem 1.875rem;
+  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.08);
+}
+.offcanvas-cart-actions-wrapper {
+  & > .btn {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-radius: 12px;
+    padding: 10px;
+
+    &.btn-link {
+      border: 1px solid #F2A761;
+      color: #F2A761;
+      margin: 0 1rem 0 0;
+    }
+
+    &.begin-checkout-btn {
+      color: #fff;
+      background-color: #F2A761;
+    }
+  }
 }

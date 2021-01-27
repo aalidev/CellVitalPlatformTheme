@@ -1,13 +1,35 @@
 {% sw_extends "@Storefront/storefront/component/product/card/price-unit.html.twig" %}
 
-{% block component_product_box_price_info %}
-    {% set purchaseUnit = product.purchaseUnit %}
-    {% set listingPrice = product.calculatedListingPrice %}
-    {% set fromPrice = listingPrice.from %}
-    {% set referncePrice = product.calculatedPrice.referencePrice %}
+{% block component_product_box_price_unit %}{% endblock %}
 
-    <div class="product-price-info">
-       <h4 class="product-price-info-total">{{ fromPrice.unitPrice|currency }}</h4>
-       <p class="product-price-info-old">{{ listingPrice.to.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}</p>
+{% block component_product_box_price %}
+    {% set listPrice = product.priceRange or product.calculatedPrices.count > 0 ? null : product.calculatedPrice.listPrice %}
+    <div class="d-flex bd-highlight align-items-center">
+        <div class="bd-highlight">
+            <h4 class="m-0 d-inline">
+                {% if (product.priceRange and product.isGrouped) or product.calculatedPrices.count > 1 %}
+                    {{ fromPrice.unitPrice|currency }}
+                    -
+                    {{ listingPrice.to.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}
+                {% elseif product.calculatedPrices|length == 1 %}
+                    {{ product.calculatedPrices.first.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}
+                {% else %}
+                    {{ product.calculatedPrice.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}
+                    {% if listPrice.percentage > 0 %}
+                        <span class="list-price{% if "listing.beforeListPrice"|trans|length > 0 or "listing.afterListPrice"|trans|length > 0  %} list-price-no-line-through{% endif %}">
+                            {{"listing.beforeListPrice"|trans|trim}} {{ listPrice.price|currency }}{{ "general.star"|trans|sw_sanitize }} {{"listing.afterListPrice"|trans|trim}}
+                        </span>
+                    {% endif %}
+                {% endif %}
+            </h4>
+        </div>
+        <div class="mr-auto bd-highlight product-box-old-price">
+            <p class="m-0 d-inline ml-3 text-decoration mr-auto">
+                {{ product.calculatedPrice.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}
+            </p>
+        </div>
+        <div class="bd-highlight">
+            <p class="m-0">4.5 {% sw_icon 'star' style {'size': 'xs', 'pack': 'solid', 'color': 'success'} %}</p>            
+        </div>
     </div>
 {% endblock %}

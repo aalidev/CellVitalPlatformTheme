@@ -1,0 +1,55 @@
+{% sw_extends '@Storefront/storefront/component/checkout/offcanvas-item.html.twig' %}
+
+{% block cart_item_variant_characteristics %}{% endblock %}
+
+{% block component_offcanvas_product_details_features %}{% endblock %}
+
+{% block component_offcanvas_product_label %}
+    <div class="cart-item-details">
+        {% if type == 'product' %}
+            <a href="{{ seoUrl('frontend.detail.page', {'productId': referencedId}) }}"
+            class="cart-item-label"
+            title="{{ label }}">
+                {{ label|u.truncate(60, '...', false) }} {% if quantity > 1 %} <span>({{quantity}})</span>{% endif %}
+            </a>
+        {% else %}
+            <div class="cart-item-label">
+                {{ label|u.truncate(60, '...', false) }}
+            </div>
+        {% endif  %}
+    </div>
+{% endblock %}
+
+{% block component_offcanvas_product_quantity_price %}
+    <div class="cart-quantity-price">
+        {% block component_offcanvas_product_quantity %}
+        {% endblock %}
+
+        {% block component_offcanvas_product_total_price %}
+            <div class="cart-item-price">
+                {{ price.totalPrice|currency }}{{ "general.star"|trans|sw_sanitize }}
+                {% set referencePrice = price.referencePrice %}
+                {% if referencePrice is not null %}
+                    <small class="cart-item-reference-price">
+                        ({{ referencePrice.price|currency }}{{ "general.star"|trans|sw_sanitize }} / {{ referencePrice.referenceUnit }}&nbsp;{{ referencePrice.unitName }})
+                    </small>
+                {% endif %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block component_offcanvas_product_remove_submit %}
+    <button type="submit"
+            title="{{ "checkout.removeLineItem"|trans|striptags }}"
+            data-product-id="{{ lineItem.id }}"
+            class="btn btn-light cart-item-remove-button">
+            <img src={{asset('/bundles/cellvitaltheme/assets/delete-bag.svg')}}>
+    </button>
+{% endblock %}
+
+{% block component_offcanvas_product_remove_redirect %}
+    <input type="hidden"
+        name="redirectTo"
+        value="{% if redirectTo is defined %}{{redirectTo}}{% else %}frontend.cart.offcanvas{% endif %}"/>
+{% endblock %}

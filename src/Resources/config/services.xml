@@ -6,11 +6,11 @@
 
     <!-- Translations -->
     <services>
-        <service id="CellVitalPlatformTheme\Resources\snippet\en_GB\SnippetFile_en_GB" public="true">
+        <service id="CellvitalTheme\Resources\snippet\en_GB\SnippetFile_en_GB" public="true">
             <tag name="shopware.snippet.file"/>
         </service>
 
-        <service id="CellVitalPlatformTheme\Resources\snippet\de_DE\SnippetFile_de_DE" public="true">
+        <service id="CellvitalTheme\Resources\snippet\de_DE\SnippetFile_de_DE" public="true">
             <tag name="shopware.snippet.file"/>
         </service>
     </services>

@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace CellVitalPlatformTheme;
+namespace CellvitalTheme;
 
 use Shopware\Core\Framework\Plugin;
 use Shopware\Storefront\Framework\ThemeInterface;
 
-class CellVitalPlatformTheme extends Plugin implements ThemeInterface
+class CellvitalTheme extends Plugin implements ThemeInterface
 {
     public function getThemeConfigPath(): string
     {

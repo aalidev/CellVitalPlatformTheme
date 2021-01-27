@@ -1,0 +1,25 @@
+.checkout {
+    .checkout-aside {
+        max-width: 448px !important;
+        flex: 1 !important;
+        margin: 0 !important;
+
+        .checkout-aside-summary-header {
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .cart-item-img {
+            width: 64px;
+        }
+
+        .cart-item-label {
+            font-size: 1rem;
+        }
+    }
+}
+
+.checkout-aside-summary {
+    display: flex;
+    flex-direction: column;
+}

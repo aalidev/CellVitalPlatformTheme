@@ -29,10 +29,10 @@
                 {% for tab in tabItems %}
                     <div class="tab-pane container fade show {% if tab.slot == 'first' %}active{% endif %}" id={{tab.slot}} role="tabpanel" aria-labelledby={{tab.slot ~ "-tab"}}>{{tab.data.content | raw}}
                         <div class="tab-content-images">
-                            <img src={{ asset('/bundles/cellvitalplatformtheme/assets/tab1.png') }}
+                            <img src={{ asset('/bundles/cellvitaltheme/assets/tab1.png') }}
                                 alt=""
                                 class="tab-image"/>
-                            <img src={{ asset('/bundles/cellvitalplatformtheme/assets/tab2.png') }}
+                            <img src={{ asset('/bundles/cellvitaltheme/assets/tab2.png') }}
                                 alt=""
                                 class="tab-image"/>
                         </div>

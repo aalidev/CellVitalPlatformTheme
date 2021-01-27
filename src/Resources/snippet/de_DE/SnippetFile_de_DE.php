@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace CellVitalPlatformTheme\Resources\snippet\de_DE;
+namespace CellvitalTheme\Resources\snippet\de_DE;
 
 use Shopware\Core\System\Snippet\Files\SnippetFileInterface;
 
