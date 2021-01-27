@@ -1,15 +1,40 @@
-{% sw_extends '@Storefront/storefront/utilities/offcanvas.html.twig' %}
+{% sw_extends '@Storefront/storefront/component/checkout/offcanvas-cart.html.twig' %}
 
-{% block utilities_offcanvas_close_text %}
-	{{ "checkout.continueShopping"|trans|sw_sanitize }}
+{% block component_offcanvas_cart_header %}{% endblock %}
+
+{% block component_offcanvas_summary %}{% endblock %}
+
+{% block component_offcanvas_cart_actions_promotion_submit %}
+    <div class="form-group-discount-send">
+        <button class="btn"
+                type="submit"
+                id="addPromotionOffcanvasCart">
+            <img src={{asset('/bundles/cellvitaltheme/assets/arrow-right.svg')}} alt="send">
+        </button>
+    </div>
 {% endblock %}
 
-{% block utilities_offcanvas_close_icon %}
-	{% sw_icon 'arrow-head-left' style { 'size': 'sm' } %}
-{% endblock %}
+{% block component_offcanvas_cart_actions %}
+    <div class="offcanvas-cart-actions">
+        {% block component_offcanvas_cart_actions_promotion %}
+            {{parent()}}
+        {% endblock %}
 
-{% block utilities_offcanvas_content %}
-	{% block component_offcanvas_cart %}
-		{% sw_include "@Storefront/storefront/page/checkout/cvp-summary.html.twig" with { actions: "true" } %}
-	{% endblock %}
+
+        {% block component_offcanvas_cart_actions_total %}
+            {% if isCartNotEmpty %}
+                {% sw_include '@Storefront/storefront/component/checkout/offcanvas-cart-summary.html.twig' %}
+            {% endif %}
+        {% endblock %}
+    
+        <div class="d-flex flex-row-reverse offcanvas-cart-actions-wrapper">
+            {% block component_offcanvas_cart_actions_checkout %}
+                {{parent()}}
+            {% endblock %}
+
+            {% block component_offcanvas_cart_actions_cart %}
+                {{parent()}}
+            {% endblock %}
+        </div>
+    </div>
 {% endblock %}

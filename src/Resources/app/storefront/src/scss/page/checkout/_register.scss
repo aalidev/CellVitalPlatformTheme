@@ -1,3 +1,6 @@
+.is-act-checkoutregisterpage .checkout {
+  padding: 0;
+}
 .checkout-aside-summary {
   border-radius: 12px;
   padding: 2.5rem;
@@ -71,4 +74,18 @@
   .checkout-aside-summary {
     padding: 1rem;
   }
+}
+
+.account-register {
+  margin-top: 64px;
+}
+
+.register-guest-control {
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.register-submit {
+  text-align: center;
 }

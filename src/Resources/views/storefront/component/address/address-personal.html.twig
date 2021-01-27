@@ -1,0 +1,15 @@
+{% sw_extends "@Storefront/storefront/component/address/address-personal.html.twig" %}
+
+{% block component_address_personal_fields_salutation_title %}
+    <div class="form-row">
+    {% for salutation in page.salutations|reverse %}
+    {% if salutation.salutationKey != 'not_specified' %}
+        {% sw_include "@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-radio.html.twig" with {
+            label: salutation.translated.displayName,
+            fieldName: salutation.id,
+            value: context.customer.salutation.id
+        } %}
+    {% endif %}
+    {% endfor %}
+    </div>
+{% endblock %}

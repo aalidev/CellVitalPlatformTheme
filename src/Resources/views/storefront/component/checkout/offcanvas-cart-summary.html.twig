@@ -1,0 +1,8 @@
+{% sw_extends '@Storefront/storefront/component/checkout/offcanvas-cart-summary.html.twig' %}
+
+{% block component_offcanvas_summary_content %}
+    <div class="summary-content d-flex justify-content-between m-3  ">
+        <h4>{{ "checkout.subtotalAmount"|trans|sw_sanitize }}</h4>
+        <h4>{{page.cart.price.positionPrice|currency}}</h4>
+    </div>
+{% endblock %}

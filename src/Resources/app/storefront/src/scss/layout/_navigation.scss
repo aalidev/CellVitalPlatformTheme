@@ -28,3 +28,19 @@
     border-radius: 8px;
   }
 }
+
+.nav-tabs {
+  border-color: #DBD9D2;
+  margin: 1rem 0 1.5rem;
+
+  .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    border-color: #DBD9D2 #DBD9D2 #ffff;
+    color: #181818;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+  }
+}

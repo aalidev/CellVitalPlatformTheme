@@ -1,0 +1,8 @@
+{% sw_extends "@Storefront/storefront/component/product/card/action.html.twig" %}
+
+{% block page_product_detail_product_buy_button %}
+    <button class="btn btn-outline-primary"
+            title="{{ "listing.boxAddProduct"|trans|striptags }}">
+        {{ "listing.boxAddProduct"|trans|sw_sanitize }}
+    </button>
+{% endblock %}

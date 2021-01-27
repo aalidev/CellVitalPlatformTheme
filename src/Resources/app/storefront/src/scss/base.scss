@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
 @import "./layout/header";
 @import "./layout/navigation";
 @import "./layout/breadcrumbs";
@@ -17,7 +19,10 @@
 @import "./component/forms";
 @import "./component/events";
 @import "./page/checkout/cart";
+@import "./page/checkout/checkout";
 @import "./page/checkout/register";
+@import "./page/checkout/item";
+@import "./page/checkout/aside";
 @import "./layout/offcanvas";
 @import "./page/product-detail";
 @import "./component/select";
@@ -34,6 +39,7 @@ h1 {
   font-size: 2.75rem;
   line-height: 3.5rem;
 }
+
 
 h2 {
   font-size: 2.25rem;
@@ -66,6 +72,15 @@ h5 {
 p {
   font-size: 1rem;
   line-height: 1.5rem;
+}
+
+.btn {
+  font-weight: 500;
+}
+
+.section-header {
+  margin: 64px 0 48px;
+  font-weight: 700;
 }
 
 .product-slider-controls-next {
@@ -176,24 +191,12 @@ img {
   }
 }
 
-.custom-select {
-  min-height: 3.5rem;
-  padding: 0.875rem 1rem 0 1.5rem;
-  font-size: 1rem;
-  border-radius: 0.75rem;
-
-  &:focus + .form-label,
-  &:not(:invalid) + .form-label {
-    transform: translateY(-110%);
-  }
-}
-
 .country-and-state-form-elements {
   display: flex;
 }
 
 .custom-radio-label {
-  padding-left: 1rem;
+  padding-left: 2rem;
   font-size: 1rem;
   padding-top: 3px;
 }
@@ -207,21 +210,32 @@ img {
 .custom-radio-label::before {
   width: 24px;
   height: 24px;
+  left: 0;
 }
 
 .custom-radio-label::after {
   top: 7px;
-  left: -20px;
+  left: 4px;
   width: 16px;
   height: 16px;
 }
 
 .custom-radio .custom-radio-input:checked ~ .custom-radio-label::after {
   background-image: none;
-  background-color: #f2a761;
+  background-color: #f2a761 !important;
   border-radius: 50%;
 }
 
 .scroll-up-button.is-visible {
   z-index: 1;
+}
+
+button[type="submit"] {
+  color: #fff;
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 24px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 385px;
 }

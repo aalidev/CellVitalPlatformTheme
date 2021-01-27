@@ -1,6 +1,12 @@
+.breadcrumb {
+  margin: 0;
+  padding: 0;
+}
+
 .cms-breadcrump {
   padding: 1.5rem 0;
   background: rgba(219, 217, 210, 0.24);
+  margin-bottom: 64px;
 
   .breadcrumb-container > a {
     font-size: 14px;
@@ -17,5 +23,11 @@
     &.is-active {
       color: #8c8c8c;
     }
+  }
+}
+
+@media (max-width: 600px) {
+  .cms-breadcrump {
+    margin-bottom: 32px;
   }
 }

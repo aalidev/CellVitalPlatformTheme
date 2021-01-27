@@ -1,0 +1,39 @@
+.checkout-image-container {
+    margin-right: 24px;
+}
+
+.checkout-detail-container {
+    display: flex;
+    flex: 1 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 840px;
+    padding-right: 54px;
+}
+
+.checkout-remove-form {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.checkout-price {
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 500;
+}
+
+@media (max-width: 600px) {
+    .checkout-detail-container {
+        flex-direction: column;
+    }
+    .checkout-quantity-form {
+        order: 1;
+    }
+    .checkout-detail-container {
+        align-items: flex-start;
+    }
+  }

@@ -1,4 +1,13 @@
 {% sw_extends '@Storefront/storefront/layout/breadcrumb.html.twig' %}
 
 {% block layout_breadcrumb_inner %}
+    <div class="breadcrumb cms-breadcrumb cms-breadcrump">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                {% block layout_breadcrumb_list %}
+                    {{parent()}}
+                {% endblock %}
+            </nav>
+        </div>
+    </div>
 {% endblock %}

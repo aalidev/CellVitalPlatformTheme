@@ -2,17 +2,22 @@
   "name": "swag/theme-skeleton",
   "description": "Theme skeleton plugin",
   "type": "shopware-platform-plugin",
+  "version": "1.0.3",
   "license": "MIT",
+  "authors": [
+    {"name":  "Thinkly", "role":  "Manufacturer"},
+    {"name": "Alisher Ali", "role": "Developer", "email": "aalidev90@gmail.com"}
+  ],
   "autoload": {
     "psr-4": {
-      "CellVitalPlatformTheme\\": "src/"
+      "CellvitalTheme\\": "src/"
     }
   },
   "extra": {
-    "shopware-plugin-class": "CellVitalPlatformTheme\\CellVitalPlatformTheme",
+    "shopware-plugin-class": "CellvitalTheme\\CellvitalTheme",
     "label": {
-      "de-DE": "Theme CellVitalPlatformTheme plugin",
-      "en-GB": "Theme CellVitalPlatformTheme plugin"
+      "de-DE": "Cellvital theme plugin",
+      "en-GB": "Cellvital theme plugin"
     }
   }
 }

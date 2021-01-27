@@ -5,7 +5,6 @@
 
 .product-detail-name-container {
   margin-top: 64px;
-
 }
 
 .page-product-detail-total {
@@ -47,6 +46,17 @@
   }
 }
 
-.buy-widget {
-  margin: 48px 0;
+.product-price-info {
+  margin-bottom: 48px;
+}
+
+.product-action .btn {
+  width: 100%;
+  padding: 1rem 0;
+  line-height: 100%;
+  border-radius: 12px;
+  
+  &:hover {
+    color: #fff;
+  }
 }
